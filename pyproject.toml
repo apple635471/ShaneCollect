@@ -1,0 +1,60 @@
+[project]
+name = "shanecollect"
+description = "Toy"
+authors = [
+    { name = "Chih-Sheng Chen", email = "apple635471@gmail.com" }
+]
+requires-python = ">=3.9"
+license = { file = "LICENSE" }
+readme = "README.md"
+
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.9",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+dependencies = [
+    "fastapi>=0.68.0,<0.69.0", 
+    "pydantic>=1.8.0,<2.0.0",
+    "python-dotenv",
+    "uvicorn>=0.15.0,<0.16.0",
+]
+
+dev = [
+    "black>=22.1.0",
+    "pylint>=2.14.0",
+    "pyright>=1.1.240",
+    "pre-commit>=3.0.0"
+]
+
+dynamic = [ "version" ]
+
+[project.urls]
+Home = "https://github.com/apple635471/ShaneCollect"
+
+[project.optional-dependencies]
+test = [ "pytest >= 6" ]
+doc = [ "sphinx" ]
+
+[project.scripts]
+shanecollect-app = "shanecollect.app:deploy"
+
+[build-system]
+requires = [ "flit_scm" ]
+build-backend = "flit_scm:buildapi"
+
+[tool.flit.sdist]
+exclude = [ "**/.gitignore", "**/.gitkeep" ]
+
+[tool.pyright]
+include = ["src"]
+exclude = [
+    "**/__pycache__",
+    "tests",
+]
